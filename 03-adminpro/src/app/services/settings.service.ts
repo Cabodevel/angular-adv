@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +6,10 @@ import { Injectable } from '@angular/core';
 export class SettingsService {
 
   private themeLink = document.querySelector('#theme');
+  private links: NodeListOf<Element>;
+  public setLinks(links: NodeListOf<Element>) {
+    this.links = links;
+  }
 
   constructor() {
     const localTheme = localStorage['theme'] ?? './assets/css/colors/blue-dark.css';
@@ -20,10 +24,9 @@ export class SettingsService {
   }
 
   setSelectedTheme() {
-    const links = document.querySelectorAll('.selector');
     const currentTheme = this.themeLink?.getAttribute('href');
 
-    links.forEach(element => {
+    this.links.forEach(element => {
       element.classList.remove('working');
       const btnTheme = element.getAttribute('data-theme');
       const btnThemeUrl = `./assets/css/colors/${btnTheme}.css`;

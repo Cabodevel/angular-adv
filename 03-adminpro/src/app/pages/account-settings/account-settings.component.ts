@@ -10,10 +10,11 @@ import { SettingsService } from 'src/app/services/settings.service';
 export class AccountSettingsComponent implements OnInit {
 
   constructor(private settingsService: SettingsService) {
-    
   }
-  
+
   ngOnInit(): void {
+    const links = document.querySelectorAll('.selector');
+    this.settingsService.setLinks(links);
     this.settingsService.setSelectedTheme();
   }
 
