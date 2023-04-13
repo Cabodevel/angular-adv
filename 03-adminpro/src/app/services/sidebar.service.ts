@@ -8,13 +8,21 @@ export class SidebarService {
 
   public menu: MenuItem[] = [
     {
-      title: "test1",
+      title: "Dashboard",
       icon: "mdi mdi-gauge",
       submenu: [
         {
-          title: "s1",
+          title: "Progressbar",
           url: "progress"
-        }
+        },
+        {
+          title: "Promises",
+          url: "promises"
+        },
+        {
+          title: "Rxjs",
+          url: "rxjs"
+        },
       ]
     }
   ];
