@@ -8,7 +8,7 @@ import { retry, take, map, filter } from 'rxjs/operators';
   styles: [
   ]
 })
-export class RxjsComponent implements  OnDestroy {
+export class RxjsComponent implements OnDestroy {
   private intervalObsSubs: Subscription;
   private subs2: Subscription;
 
@@ -17,9 +17,9 @@ export class RxjsComponent implements  OnDestroy {
     this.subs2.unsubscribe();
   }
 
-  constructor(){
+  constructor() {
 
-    this.intervalObsSubs= this.returnInterval().subscribe({
+    this.intervalObsSubs = this.returnInterval().subscribe({
       next(value) { console.log(value) }
     })
 
@@ -36,7 +36,7 @@ export class RxjsComponent implements  OnDestroy {
   returnInterval(): Observable<number> {
     return interval(1000).pipe(
       take(100),
-      map( val => val + 1),
+      map(val => val + 1),
       filter(val => val % 2 === 0),
     );
   }
